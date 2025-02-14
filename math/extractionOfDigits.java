@@ -10,38 +10,22 @@ public class extractionOfDigits {
         extractDigitsUsingStringConversion(1445);
     }
 
-    static void extractDigits(final int startValue) {
-        int remainingValue = startValue;
-        while (remainingValue > 0) {
-            final int digit = remainingValue % 10;
+    static void extractDigits(int value) {
+
+        while (value > 0) {
+            int digit = value % 10;
             System.out.print(digit + " ");
-            remainingValue = remainingValue / 10;
+            value = value / 10;
         }
         System.out.println();
     }
 
-    static void extractDigitsUsingStack(final int startValue) {
+    static void extractDigitsUsingStack(int value) {
         Stack<Integer> stackList = new Stack<>();
-        int remainingValue = startValue;
-        while (remainingValue > 0) {
-            stackList.push(remainingValue % 10);
-            remainingValue = remainingValue / 10;
+        while (value > 0) {
+            stackList.push(value % 10);
+            value = value / 10;
         }
-        Iterator<Integer> iter = stackList.iterator();
-        while (iter.hasNext())
-            System.out.print(stackList.pop());
-
-        System.out.println();
-    }
-
-    static void extractDigitsUsingArrayList(final int startValue) {
-        ArrayList arrayList = new ArrayList<>();
-        int remainingValue = startValue;
-        while (remainingValue > 0) {
-            arrayList.add(remainingValue % 10);
-            remainingValue = remainingValue / 10;
-        }
-
         // Iterator: Only forward iteration.
         // Methods:
         // hasNext() - checks if there’s another element.
@@ -51,6 +35,18 @@ public class extractionOfDigits {
         // while (iterator.hasNext()) {
         // System.out.print(iterator.next() + " ");
         // }
+        Iterator<Integer> iter = stackList.iterator();
+        while (iter.hasNext())
+            System.out.print(stackList.pop() + " ");
+        System.out.println();
+    }
+
+    static void extractDigitsUsingArrayList(int value) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        while (value > 0) {
+            arrayList.add(value % 10);
+            value = value / 10;
+        }
 
         // ListIterator: Forward and backward iteration, plus modification.
         // Methods:
